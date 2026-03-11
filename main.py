@@ -28,17 +28,12 @@ def main():
         subprocess.run(["streamlit", "run", "dashboard.py", "--server.port", str(args.port)])
         return
 
-    # Start dashboard in a separate process
-    print(f"Starting evolution and dashboard on port {args.port}...")
-    dashboard_proc = subprocess.Popen(["streamlit", "run", "dashboard.py", "--server.port", str(args.port)])
-
+    print(f"Starting Evolution Process...")
     try:
         # Run evolution
         evolve()
     except KeyboardInterrupt:
         print("\nShutting down...")
-    finally:
-        dashboard_proc.terminate()
 
 if __name__ == "__main__":
     main()
